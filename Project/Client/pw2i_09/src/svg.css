@@ -1,0 +1,14 @@
+#municipalities path {
+  fill: green;
+  stroke: black;
+  stroke-width: 0.5px;
+}
+
+#lakes path {
+  fill: deepskyblue;
+}
+
+#tg-map {
+  padding-left: 15vmax;
+  max-width: 80%;
+}
