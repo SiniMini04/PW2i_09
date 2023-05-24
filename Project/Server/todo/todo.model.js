@@ -16,45 +16,6 @@ async function downloadDatafromApi(){
 const todos = downloadDatafromApi(); //Ist asyncron
 
 
-
-//Json wird als objekt abgespeichert!
-/*function fileToObj(filename){
-    fs.readFile(filename, 'utf-8', (e, jsonStr) => {
-        if(e) {
-            console.log('Fehler beim Auslesen des Json <<Data.js>> dokuments!!!');
-            return 0;
-        }//else
-        try{
-            const jsonObj = JSON.parse(jsonStr);
-            console.log('JSPbj' + jsonObj);
-
-        }catch(e){console.log("String konnte nicht in jsonObjekt umgewandelt werden!")};
-    })
-    return jsonObj;
-}*/
-
-//const todos = fileToObj('data.json');
-
-/*
-const todos = [
-    {
-      id: '1',
-      description: 'JavaScript Projekt fertigstellen',
-      isDone: true,
-    },
-    {
-      id: '2',
-      description: 'Ferien machen und relaxen',
-      isDone: false,
-    },
-    {
-      id: '3',
-      description: 'Node.js - Das umfassende Handbuch lesen',
-      isDone: false,
-    },
-  ];
-
-  */
   
   function getAll() {
     return Promise.resolve(todos);
@@ -94,5 +55,7 @@ const todos = [
     }
     return null;
   }
+
+  
   
   export { getAll, create, update };
