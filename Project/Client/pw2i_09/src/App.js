@@ -1,19 +1,20 @@
 import "./App.css";
-import Svg from "./svg.js";
-import Nav from "./navbar.js";
+import SVG from "./svg.js";
 import NAV from "./navbar.js";
 import Selects from "./selects";
 import Diagramme from "./diagramme";
-
+import { ReactComponent as SvgIcon } from "./assets/map-tg.svg";
 
 function App() {
   return (
     <>
-    <div>
-    <h1 className="">Titel</h1>
-    <Svg></Svg>
-    <Diagramme></Diagramme>
-    </div>
+      <h1 className="">Titel</h1>
+      <div className="flex">
+        <NAV></NAV>
+        <SVG></SVG>
+      </div>
+
+      <Diagramme></Diagramme>
     </>
   );
 }
