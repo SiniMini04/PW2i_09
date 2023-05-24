@@ -3,15 +3,16 @@ import Svg from "./svg.js";
 import Nav from "./navbar.js";
 import NAV from "./navbar.js";
 import Selects from "./selects";
-import Popup1 from "./popup1";
+import Diagramme from "./diagramme";
+
 
 function App() {
   return (
     <>
     <div>
-    <h1 className="rainbow">Titel</h1>
+    <h1 className="">Titel</h1>
     <Svg></Svg>
-    
+    <Diagramme></Diagramme>
     </div>
     </>
   );

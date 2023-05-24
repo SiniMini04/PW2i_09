@@ -17,7 +17,7 @@
   fill:rgb(195, 156, 60);
 }
 
-@use "@material/tooltip/styles";
+/*@use "@material/tooltip/styles";*/
 
 .rainbow{
   animation: rainbow 2.5s linear;

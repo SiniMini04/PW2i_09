@@ -1,16 +1,17 @@
+import React from "react";
 import { useEffect } from "react";
 import img from "./assets/map-tg.svg";
 import "./svg.css";
 import { ReactSVG } from 'react-svg';
 import { useState } from "react";
-import Popup1 from "./popup1";
+
 import { styled } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 
 
-
+//
 const HtmlTooltip = styled(({ className, ...props }) => (
   <Tooltip {...props} classes={{ popper: className }} />
 ))(({ theme }) => ({
@@ -25,7 +26,7 @@ const HtmlTooltip = styled(({ className, ...props }) => (
 
 function SVG(props) {
   
-  
+  const [showPopup, setShowPopup] = useState(false);
   //h
 
   let doc = document.querySelectorAll('#municipalities path'); //path
@@ -43,7 +44,10 @@ function SVG(props) {
     console.log(obj.id + "Wurde geClickt!");
     //setIsOpen(!isOpen);
 
-  //lOT OF 
+ 
+   // Popup1.setBasicModal(!basicModal)
+//
+  //lOT OF
     
   }
   function onHover(targ){
@@ -53,24 +57,27 @@ function SVG(props) {
   }
 
   
- //
+ /*
+ function renderTooltips(){
+
+  const docPath = document.querySelectorAll('path');
+  for(let i = 0; i < docPath.length; i++){
+    const tt = document.createElement('HtmlTooltip')
+    document.insertBefore(tt, docPath[i]);
+  }
+
+ }*/
+
+
   
 
 
   return (
     <>
-        <HtmlTooltip
-        title={
-          <React.Fragment>
-            <Typography color="inherit">Tooltip with HTML</Typography>
-            <em>{"And here's"}</em> <b>{'some'}</b> <u>{'amazing content'}</u>.{' '}
-            {"It's very engaging. Right?"}
-          </React.Fragment>
-        }
-      >
-        <Button>HTML</Button>
-      </HtmlTooltip>
+      
+        
        <ReactSVG src={img} />
+       
        
     </>
   );
