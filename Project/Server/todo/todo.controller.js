@@ -23,6 +23,25 @@ async function updateTodo(request, response){
     await update(request.params.id, request.body).then((todo) => { response.json(todo); }).catch((error) => { response.status(404).json({ message: error });});
 }
 
+async function getFor(req, res){ //Gibt alles zurück was irgend wo den param enthält.
+    const abst = req.params.abstimung;
+
+
+    let to = await getAll();
+    let newTo = [];
+    for(let i = 0; i < to.length; i++){
+        
+        if(Object.values(to[i]).includes(abst)){
+            console.log("Gefunden");
+            newTo.push(to[i]);
+        }
+    }
+    console.log(to);
+    console.log(abst);
+    res.send(newTo);
+
+}
+
 async function abfrage(req, res) {
     let par = req.params.diagram;
     switch(par){
@@ -109,8 +128,24 @@ async function abfrage(req, res) {
                     "stimmbeteiligung" : stimmbeteiligung
                 }
                 data2.push(obj);
+                
+            //case "dia1":
 
+                /*
+                - Ja nein im kanton
 
+                - Diagramm wahl zwischen 
+                - gemeinde namen
+                - Wahlbeteiligung
+                - 
+
+                Kreisdiagram
+                - leere s
+                - ungültig
+                - gültig
+                    */
+
+                //break;
             }
             console.log(data2);
             res.send(data2);
@@ -121,6 +156,11 @@ async function abfrage(req, res) {
 
             res.send('d2');
         break;
+
+
+        case "dia1":
+
+            break;
     }
 }
 
@@ -129,4 +169,4 @@ async function abfrage(req, res) {
 
 
 
-export { getTodos, createTodo, updateTodo, abfrage };
+export { getTodos, createTodo, updateTodo, abfrage, getFor };
