@@ -9,7 +9,7 @@ function HEADER(props) {
         <h1>Abstimmungsergebnisse Kanton Thurgau</h1>
         <TgIcon id="tg-icon" />
       </div>
-      <hr class="colorful-line"></hr>
+      <div class="tg-horizont"></div>
     </>
   );
 }
