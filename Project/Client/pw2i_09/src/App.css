@@ -20,21 +20,3 @@ li a {
   padding: 8px 16px;
   text-decoration: none;
 }
-h1 {
-  font-size: 24px;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.rainbow {
-  animation: rainbow 2.5s linear;
-  animation-iteration-count: infinite;
-}
-.rainbow-bg {
-  animation: rainbow-bg 2.5s linear;
-  animation-iteration-count: infinite;
-}

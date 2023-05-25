@@ -1,6 +1,7 @@
 import "./App.css";
 import SVG from "./svg.js";
 import NAV from "./navbar.js";
+import HEADER from "./header";
 import Selects from "./selects";
 import Diagramme from "./diagramme.js";
 import { ReactComponent as SvgIcon } from "./assets/map-tg.svg";
@@ -8,7 +9,7 @@ import { ReactComponent as SvgIcon } from "./assets/map-tg.svg";
 function App() {
   return (
     <>
-      <h1 className="">Abstimmungsergebnisse Kanton Thurgau</h1>
+      <HEADER></HEADER>
       <div className="flex">
         <NAV></NAV>
         <SVG></SVG>
