@@ -44,6 +44,31 @@ async function getFor(req, res){ //Gibt alles zurück was irgend wo den param en
 
 }
 
+async function getGemHoech(req,res){
+    let te = await getAll();
+    let hoechst = [];
+    
+
+    for(let i = 0; i < te.length; i++){
+        te.sort((a,b) => {
+            return b.stimmbeteiligung - a.stimmbeteiligung;
+        });
+
+    }
+    for(let i = 0; i < te.length; i++){
+        hoechst.push(te[i].stimmbeteiligung)
+
+    }
+    let highest10 = [];
+    for(let i = 0; i < 10; i++){
+        highest10.push(hoechst[i]);
+    }
+
+
+    console.log(hoechst);
+    res.send(highest10);
+}
+
 async function getJaNein(req, res){
     let par = req.params.abst;
     
@@ -217,4 +242,4 @@ async function abfrage(req, res) {
 
 
 
-export { getTodos, createTodo, updateTodo, abfrage, getFor, getJaNein, getguelungueleer };
+export { getTodos, createTodo, updateTodo, abfrage, getFor, getJaNein, getguelungueleer, getGemHoech };
