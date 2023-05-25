@@ -14,6 +14,8 @@ async function getTodos(request, response){
               //Warum wird der return in das attribut return geschrieben?
 }
 
+
+
 async function createTodo(request, response){
     const todo = await create(request.body);
     response.json(todo);
@@ -39,6 +41,41 @@ async function getFor(req, res){ //Gibt alles zurück was irgend wo den param en
     console.log(to);
     console.log(abst);
     res.send(newTo);
+
+}
+
+async function getJaNein(req, res){
+    let par = req.params.abst;
+    
+    let to = await getAll();
+    let newTo = [];
+
+    for(let i = 0; i < to.length; i++){
+        
+        if(Object.values(to[i]).includes(par)){
+            console.log("Gefunden");
+            newTo.push(to[i]);
+        }
+    }
+    
+    
+    console.log(newTo);
+    let obj = {
+        ja_stimmen: 0,
+        nein_stimmen: 0
+    }
+
+    for(let a = 0; a < newTo.length; a++){
+
+        let ja_stimmen = newTo[a].ja_stimmen;
+        let nein_stimmen = newTo[a].nein_stimmen;
+
+        obj.ja_stimmen += ja_stimmen;
+        obj.nein_stimmen += nein_stimmen;
+
+    }
+    console.log(newTo);
+    res.send(obj);
 
 }
 
@@ -71,35 +108,7 @@ async function abfrage(req, res) {
             break;
         case "tooltip":
 
-            /*
-            - Name
-            - Stimberechtigte
-            - Eingelegte Stimmen
-            - Leere Stimmen
-            - Ungültige Stimmen
-            - Gültig Stimmen
-            - Ja
-            - nein
-            - Stimmbeteiligung
-
-            "datum_abstimmung": "2004-05-16",
-        "vorlage_bezeichnung": "Gesetz zum Vollzug der Bundesgesetzgebung \u00fcber den Erwerb von Grundst\u00fccken durch Personen im Ausland",
-        "vorlageart_code": 4,
-        "vorlageart_bezeichnung": "Fakultatives Referendum",
-        "bezirk_nr": "2005",
-        "bezirk_name": "Kreuzlingen",
-        "bfs_nr_gemeinde": "4651",
-        "gemeinde_name": "Gottlieben",
-        "stimmberechtigte": 175,
-        "eingelegte_stimmzettel": 91,
-        "leere_stimmen": 3,
-        "ungueltige_stimmen": 1,
-        "gueltige_stimmen": 87,
-        "ja_stimmen": 40,
-        "nein_stimmen": 47,
-        "stimmbeteiligung": 52.0,
-        "url_abstimmungsvorlage": null
-            */
+            
             const todos = await getAll();
             let data2 = []
             
@@ -169,4 +178,6 @@ async function abfrage(req, res) {
 
 
 
-export { getTodos, createTodo, updateTodo, abfrage, getFor };
+
+
+export { getTodos, createTodo, updateTodo, abfrage, getFor, getJaNein };
