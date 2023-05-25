@@ -1,13 +1,12 @@
 #municipalities path {
-  fill: green;
+  fill: #72a536;
   stroke: black;
   stroke-width: 0.5px;
 }
 
 #tg-map {
   padding-left: 7vmax;
-  max-width: 82%;
-  margin-top: 40px;
+  max-width: 77%;
 }
 
 #lakes path {

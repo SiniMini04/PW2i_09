@@ -22,5 +22,14 @@ h2 {
   align-items: center;
 }
 .diagramm {
-  padding-bottom: 60px;
+  padding-bottom: 20px;
+}
+
+#line-wrapper {
+  width: 800px;
+  height: 400px;
+  margin: 0 auto;
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
 }
