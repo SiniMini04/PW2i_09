@@ -17,6 +17,13 @@ h1 {
 .header-container {
   display: flex;
   align-items: center;
-  margin-top: 30px;
+  margin-top: 20px;
   justify-content: space-between;
+}
+
+.tg-horizont {
+  padding-bottom: 65px;
+  box-shadow: inset 0 -30px 0 #4ab1eb, inset 0px -37px 0px #00a4e8,
+    inset 0px -44px 0px #72a536, inset 0px -56px 0px #adc427,
+    inset 0px -63px 0px #ffec00;
 }
