@@ -10,6 +10,7 @@ function App() {
     <>
     <div>
     <h1 className="">Titel</h1>
+    <NAV></NAV>
     <SVG></SVG>
     <Diagramme></Diagramme>
     </div>

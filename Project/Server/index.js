@@ -2,6 +2,9 @@ import express from 'express';
 import {r as todoRouter } from './todo/todo.routes.js';
 
 const app = express();
+
+import cors from 'cors';
+app.use(cors());
 app.use(express.json());
 //Use Routes 
 
