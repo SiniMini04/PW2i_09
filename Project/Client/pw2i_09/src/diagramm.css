@@ -1,0 +1,26 @@
+#chart-wrapper {
+  width: 800px;
+  height: 400px;
+  margin: 0 auto;
+  display: flex;
+}
+
+.chart {
+  width: 80%;
+  height: 80%;
+  display: inline-block;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 40px;
+  padding-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.diagramm {
+  padding-bottom: 60px;
+}

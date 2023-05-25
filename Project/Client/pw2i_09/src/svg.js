@@ -87,7 +87,7 @@ function SVG(props) {
 
   return (
     <>
-      <SvgIcon />
+      <SvgIcon id="tg-map" />
       <p id="tooltip-map" class="do-not-display"></p>
     </>
   );
