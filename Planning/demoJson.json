@@ -1,0 +1,65 @@
+{
+    "Gemeinden": [ /*RohDaten ->Alles, alle daten die zu einer Gemeinde gehören*/
+      {
+        "datum_abstimmung": "2022-11-27",
+        "vorlage_bezeichnung": "Objektkredit von Fr. 16'930'000 für den Erweiterungsbau der Kantonsschule Frauenfeld",
+        "vorlageart_code": 1,
+        "vorlageart_bezeichnung": "Obligatorisches Referendum",
+        "bezirk_nr": "2015",
+        "bezirk_name": "Weinfelden",
+        "bfs_nr_gemeinde": "4891",
+        "gemeinde_name": "Berg",
+        "stimmberechtigte": 2351,
+        "eingelegte_stimmzettel": 681,
+        "leere_stimmen": 15,
+        "ungueltige_stimmen": 13,
+        "gueltige_stimmen": 653,
+        "ja_stimmen": 411,
+        "nein_stimmen": 242,
+        "stimmbeteiligung": 28.97,
+        "url_abstimmungsvorlage": "https://wahlen.tg.ch/public/upload/assets/133903/kttg_botschaft_erweiterungsbau_kantonsschule_frauenfeld_nov_2022_web.pdf"
+      }
+    ],
+    "Abstimmungen": [ /*Um die Liste mit Abstimmungen anzeigen zu lassen, Damit man eine Abstimmung auswählen kann!*/
+      {
+        "vorlage_bezeichnung": "Gegenvorschlag ...",
+        "datum_abstimmung": "2009-05-17"
+      }
+    ],
+    "GemeindeHover": { /*Wenn man auf der KArte über eine Gemeinde Hovert wird das als tooltip angezeigt.*/
+      "gemeinde_name": "Roggwil",
+      "stimmberechtigte": 1956,
+      "eingelegte_stimmzettel": 774,
+      "leere_stimmen": 101,
+      "ungueltige_stimmen": null,
+      "gueltige_stimmen": 748,
+      "ja_stimmen": 321,
+      "nein_stimmen": 326,
+      "stimmbeteiligung": 39.57
+    },
+    "Gemeinde": { /*Allgemeine Auswertung der Daten über mehrerer Gemeinden (z.B ein direkter )*/
+      "datum_abstimmung": "2009-05-17",
+      "vorlage_bezeichnung": "Gegenvorschlag des Grossen Rates zur Volksinitiative 'Schutz vor Passivrauchen'",
+      "vorlageart_code": 2,
+      "vorlageart_bezeichnung": "Volksinitiative mit Gegenentwurf: Gegenentwurf",
+      "gemeinde_name": "Roggwil",
+      "stimmberechtigte": 1956,
+      "eingelegte_stimmzettel": 774,
+      "leere_stimmen": 101,
+      "ungueltige_stimmen": null,
+      "gueltige_stimmen": 748,
+      "ja_stimmen": 321,
+      "nein_stimmen": 326,
+      "stimmbeteiligung": 39.57,
+      "url_abstimmungsvorlage": "https://wahlen.tg.ch/public/upload/assets/504/Volksabst_Feb08.pdf"
+    },
+    "GrafikStimmberechtigung": { /*Diagramm für Stimmbeteiligung der Gemeinden (Welche Gemeinde hat die grösste welche die tiefste?)*/
+      "Gemeinden": [
+        {
+          "stimmbeteiligung": 39.57,
+          "gemeinde_name": "Roggwil"
+        }
+      ]
+    }
+}
+  
