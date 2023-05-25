@@ -1,6 +1,6 @@
 import React from "react";
 import "./diagramm.css";
-import { Chart as chartjs, ArcElement, Tooltip, Legend } from "chart.js";
+import { Chart as chartjs, ArcElement, Tooltip, Legend } from "chart.js/auto";
 import { Pie, Bar } from "react-chartjs-2";
 
 function Diagramme() {
@@ -57,18 +57,20 @@ function Diagramme() {
 
   return (
     <>
-      <h2>Statistik:</h2>
-      <div id="chart-wrapper">
-        <div className="chart">
-          <Pie data={JANein} options={optionspie} />
+      <div className="diagramm">
+        <h2>Statistik:</h2>
+        <div id="chart-wrapper">
+          <div className="chart">
+            <Pie data={JANein} options={optionspie} />
+          </div>
+          <div className="chart">
+            <Pie data={Stimmen} options={optionspie} />
+          </div>
         </div>
-        <div className="chart">
-          <Pie data={Stimmen} options={optionspie} />
-        </div>
-      </div>
-      <div id="chart-wrapper">
-        <div className="chart">
-          <Bar data={Stimmbeteiligung} options={optionsbar} />
+        <div id="chart-wrapper">
+          <div className="chart">
+            <Bar data={Stimmbeteiligung} options={optionsbar} />
+          </div>
         </div>
       </div>
     </>

@@ -8,12 +8,14 @@ import { ReactComponent as SvgIcon } from "./assets/map-tg.svg";
 function App() {
   return (
     <>
-      <h1 className="">Titel</h1>
+      <h1 className="">Abstimmungsergebnisse Kanton Thurgau</h1>
       <div className="flex">
         <NAV></NAV>
         <SVG></SVG>
       </div>
-      <Diagramme></Diagramme>
+      <div className="body">
+        <Diagramme></Diagramme>
+      </div>
     </>
   );
 }
