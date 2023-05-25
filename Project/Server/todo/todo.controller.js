@@ -78,6 +78,43 @@ async function getJaNein(req, res){
     res.send(obj);
 
 }
+async function getguelungueleer(req, res){
+    let par = req.params.abst;
+    
+    let to = await getAll();
+    let newTo = [];
+
+    for(let i = 0; i < to.length; i++){
+        
+        if(Object.values(to[i]).includes(par)){
+            console.log("Gefunden");
+            newTo.push(to[i]);
+        }
+    }
+    
+    
+    console.log(newTo);
+    let obj = {
+        gueltige_stimmen: 0,
+        ungueltige_stimmen: 0,
+        leere_stimmen: 0
+    }
+
+    for(let a = 0; a < newTo.length; a++){
+
+        let gueltige_stimmen = newTo[a].gueltige_stimmen;
+        let ungueltige_stimmen = newTo[a].ungueltige_stimmen;
+        let leere_stimmen = newTo[a].leere_stimmen;
+
+        obj.gueltige_stimmen += gueltige_stimmen;
+        obj.ungueltige_stimmen += ungueltige_stimmen;
+        obj.leere_stimmen += leere_stimmen;
+
+    }
+    console.log(newTo);
+    res.send(obj);
+
+}
 
 async function abfrage(req, res) {
     let par = req.params.diagram;
@@ -180,4 +217,4 @@ async function abfrage(req, res) {
 
 
 
-export { getTodos, createTodo, updateTodo, abfrage, getFor, getJaNein };
+export { getTodos, createTodo, updateTodo, abfrage, getFor, getJaNein, getguelungueleer };
