@@ -18,6 +18,13 @@ const HtmlTooltip = styled(({ className, ...props }) => (
   },
 }));
 
+async function getAbst() {
+  const url = "http://localhost:3030/api/todos/tooltip/";
+  let data = await axios.get(url).then((response) => response.data.art);
+  console.log(data);
+  return data;
+}
+
 function SVG(props) {
   useEffect(() => {
     console.log(props.abstimmung);

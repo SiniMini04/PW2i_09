@@ -5,19 +5,23 @@ import axios from "axios";
 async function downloadJson() {}
 
 async function downloadDatafromApi() {
+  /*
   let daeten = (
     await axios.get(
       "https://data.tg.ch/api/v2/catalog/datasets/sk-stat-52/exports/json"
     )
   ).data;
-
+/*
   console.log(daeten);
   for (let i = 0; i < daeten.length; i++) {
     daeten[i].vorlage_bezeichnung.replaceAll("\u2019", ""); //\u00fc
     daeten[i].vorlage_bezeichnung.replaceAll("\u00fc", "");
-    console.log(daeten[i].vorlage_bezeichnung);
+    //console.log(daeten[1].vorlage_bezeichnung);
   }
   return daeten;
+  */
+ 
+ return ((await axios.get('https://data.tg.ch/api/v2/catalog/datasets/sk-stat-52/exports/json')).data);
 }
 
 const todos = downloadDatafromApi(); //Ist asyncron

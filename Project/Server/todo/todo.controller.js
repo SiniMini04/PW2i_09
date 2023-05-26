@@ -145,27 +145,35 @@ async function abfrage(req, res) {
   let par = req.params.diagram;
   switch (par) {
     case "abstim":
-      const todo = await getAll();
-      const data = [];
+      let todo = await getAll();
+      let data = [];
       console.log(todo.length);
       for (let i = 0; i < todo.length; i++) {
         let item = todo[i].vorlage_bezeichnung;
+
+        //Debug
+        if(i <= 1){
+          console.log("Item: " + item + " todo: ", todo[i]);
+
+        }
+
+
         if (!data.includes(item)) {
           data.push(item);
+          
+        }else{
+          
         }
       }
 
-      console.log(data);
       
 
+      console.log("Return all data to controller");
+      console.log(data[1]);
+      res.json(data);
                 
                 
-                let item = todo[i].vorlage_bezeichnung;
-                if(!data.includes(item)){
-                    data.push(item);
-                }
-                
-            }
+            
 
 
       break;
@@ -220,11 +228,11 @@ async function abfrage(req, res) {
       console.log(data2);
       res.send(data2);
 
-      res.send("d2");
+      //res.send("d2");
+      
       break;
+    
 
-    case "dia1":
-      break;
   }
 }
 
