@@ -9,14 +9,6 @@ import { ReactComponent as SvgIcon } from "./assets/map-tg.svg";
 function App() {
   return (
     <>
-<<<<<<< HEAD
-    <div>
-    <h1 className="">Titel</h1>
-    <NAV></NAV>
-    <SVG></SVG>
-    <Diagramme></Diagramme>
-    </div>
-=======
       <HEADER></HEADER>
       <div className="flex">
         <NAV></NAV>
@@ -25,7 +17,6 @@ function App() {
       <div className="body">
         <Diagramme></Diagramme>
       </div>
->>>>>>> cc74974ebb7938ece8c94be47873e68d884f807f
     </>
   );
 }

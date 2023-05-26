@@ -8,8 +8,9 @@ import axios from 'axios';
 async function getAbst(){
   const url = 'http://localhost:3030/api/todos/abstim';
   let votinglist = [];
-  
-  return await axios.get(url).then( (response) => response.data.art);     
+  let data =  await axios.get(url).then( (response) => response.data.art);  
+  console.log(data);
+  return data;
 }
 
 
@@ -22,14 +23,7 @@ function NAV(props) {
   const [basicCollapse2, setBasicCollapse2] = useState(false);
   //const [votinglist, changeVoting] = useState(null)
 
-  //useEffect(getAbst().then(value=>changeVoting(value)), []);
-  let votinglist = getAbst().then((response) => {
-    console.log(response.data);
-  });
-  console.log("grrrr2", votinglist);
-  //let votinglist = [1,1,2,3];
-
-  votinglist = [1,2,3];
+ 
   
 
   //getvotinglist();
@@ -37,6 +31,13 @@ function NAV(props) {
   useEffect(() => {
     return 
     () => {
+      let votinglist = getAbst().then((response) => {
+        console.log(response.data);
+      });
+      console.log("grrrr2", votinglist);
+      //let votinglist = [1,1,2,3];
+    
+      votinglist = [1,2,3];
       const ul = document.querySelector("ul");
 
       for (let i = 0; i < votinglist.length; i++) {
