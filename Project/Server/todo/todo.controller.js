@@ -156,7 +156,17 @@ async function abfrage(req, res) {
       }
 
       console.log(data);
-      res.json({ art: data });
+      
+
+                
+                
+                let item = todo[i].vorlage_bezeichnung;
+                if(!data.includes(item)){
+                    data.push(item);
+                }
+                
+            }
+
 
       break;
     case "tooltip":
