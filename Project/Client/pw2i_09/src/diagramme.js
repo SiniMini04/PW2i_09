@@ -2,14 +2,27 @@ import React from "react";
 import "./diagramm.css";
 import { Chart as chartjs, ArcElement, Tooltip, Legend } from "chart.js/auto";
 import { Pie, Bar } from "react-chartjs-2";
-import axios from 'axios';
+import { getAbstimmung } from "./navbar.js";
+import { useEffect, useState } from "react";
+import axios from "axios";
+
+console.log(getAbstimmung());
 
 function Diagramme() {
   chartjs.register(ArcElement, Tooltip, Legend);
-/*
-  let abstimmung = "Frauenfeld"; 
-  let data = axios.get('https://localhost:3030/api/todos/janein/' + abstimmung).then((response) =>{console.log(response)});
-  console.log(data);*/
+
+  useEffect(() => {
+    return () => {
+      console.log(getAbstimmung());
+      /*
+      let data = axios
+        .get("https://localhost:3030/api/todos/janein/" + getAbstimmung())
+        .then((response) => {
+          console.log(response);
+        });
+      console.log(data);*/
+    };
+  }, []);
 
   const JANein = {
     labels: ["JA", "Nein"],
