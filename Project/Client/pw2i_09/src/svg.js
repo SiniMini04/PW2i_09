@@ -20,6 +20,20 @@ const HtmlTooltip = styled(({ className, ...props }) => (
 
 function SVG(props) {
   useEffect(() => {
+    console.log(props.abstimmung);
+    let abstimmung = props.abstimmung;
+    abstimmung = encodeURIComponent(abstimmung);
+    console.log(abstimmung);
+    /*
+    let data = axios
+      .get("https://localhost:3030/api/todos/janein/" + abstimmung)
+      .then((response) => {
+        console.log(response);
+      });
+    console.log(data);*/
+  }, [props.abstimmung]);
+
+  useEffect(() => {
     return () => {
       let doc = document.querySelectorAll("#municipalities path"); //path
       console.log("doc");
