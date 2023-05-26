@@ -1,23 +1,14 @@
 import { useEffect } from "react";
 import "./navbar.css";
 import React from "react";
-import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import axios from "axios";
-
-let abstimmung =
-  "Objektkredit von Fr. 16'300'000 für den Erweiterungsbau der Kantonsschule Frauenfeld";
 
 async function getAbst() {
   const url = "http://localhost:3030/api/todos/abstim";
   let data = await axios.get(url).then((response) => response.data.art);
   console.log(data);
   return data;
-}
-
-function getAbstimmung() {
-  console.log("Send");
-  return abstimmung;
 }
 
 function NAV(props) {
@@ -37,7 +28,7 @@ function NAV(props) {
           ul.appendChild(li);
           link.innerHTML = votinglist[i];
           link.addEventListener("click", () => {
-            sendDataToBackend(votinglist[i]);
+            props.changeAbstimmung(votinglist[i]);
           });
         }
       });
@@ -46,7 +37,7 @@ function NAV(props) {
 
   const sendDataToBackend = (data) => {
     console.log("Sending data to backend:", data);
-    abstimmung = data;
+    doFindAbstiimung(data);
   };
 
   return (
@@ -59,4 +50,3 @@ function NAV(props) {
 }
 
 export default NAV;
-export { getAbstimmung };
