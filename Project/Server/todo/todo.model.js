@@ -9,8 +9,17 @@ async function downloadJson(){
 
 
 async function downloadDatafromApi(){
-    
-   return (await axios.get('https://data.tg.ch/api/v2/catalog/datasets/sk-stat-52/exports/json')).data;
+  
+
+  let daeten =  (await axios.get('https://data.tg.ch/api/v2/catalog/datasets/sk-stat-52/exports/json')).data;
+
+   
+  console.log(daeten);
+  for(let i = 0; i < daeten.length; i++){
+    daeten[i].vorlage_bezeichnung.replaceAll("\u2019", ""); //\u00fc
+    daeten[i].vorlage_bezeichnung.replaceAll("\u00fc", "");
+  }
+   return daeten;
 }
 
 const todos = downloadDatafromApi(); //Ist asyncron

@@ -46,7 +46,7 @@ async function getFor(req, res){ //Gibt alles zurück was irgend wo den param en
 async function getGemHoech(req,res){
     let te = await getAll();
     let hoechst = [];
-    
+    let hoechst2 = [];
 
     for(let i = 0; i < te.length; i++){
         te.sort((a,b) => {
@@ -56,20 +56,32 @@ async function getGemHoech(req,res){
     }
     for(let i = 0; i < te.length; i++){
         hoechst.push(te[i].stimmbeteiligung)
+        hoechst2.push(te[i].gemeinde_name)
 
     }
     let highest10 = [];
+    let highest102 = [];
     for(let i = 0; i < 10; i++){
         highest10.push(hoechst[i]);
+        highest102.push(hoechst2[i]);
     }
+    let obj = {
+        highestZ: null,
+        highestG: null
+    }
+    obj.highestZ = highest10;
+    obj.highestG = highest102;
 
-  console.log(hoechst);
-  res.send(highest10);
+
+
+  console.log(obj);
+  res.send(obj);
 }
 
 async function getJaNein(req, res){
     let par = req.params.abst;
-    
+    par = "Objektkredit von Fr. 16\u2019300\u2019000 f\u00fcr den Erweiterungsbau der Kantonsschule Frauenfeld";
+    console.log("Parameter: " + par);
     let to = await getAll();
     let newTo = [];
 
@@ -82,7 +94,7 @@ async function getJaNein(req, res){
     }
     
     
-    console.log(newTo);
+    //console.log(newTo);
     let obj = {
         ja_stimmen: 0,
         nein_stimmen: 0
@@ -96,7 +108,8 @@ async function getJaNein(req, res){
     obj.ja_stimmen += ja_stimmen;
     obj.nein_stimmen += nein_stimmen;
   }
-  console.log(newTo);
+  //console.log(newTo);
+  console.log("Parameter: " + par);
   res.send(obj);
 }
 async function getguelungueleer(req, res){

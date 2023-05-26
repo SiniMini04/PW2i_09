@@ -8,6 +8,17 @@ import axios from "axios";
 
 console.log(getAbstimmung());
 
+
+async function getGemHoech() {
+  
+  const url = "http://localhost:3030/api/todos/getGemHoech";
+  let data = await axios.get(url).then((response) => response.data);
+  console.log("Daten aus async: " + data);
+  return data;
+
+  //return await axios.get(url);
+}
+
 function Diagramme() {
   chartjs.register(ArcElement, Tooltip, Legend);
 
@@ -49,19 +60,39 @@ function Diagramme() {
       },
     ],
   };
-
   const Stimmbeteiligung = {
     labels: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"],
     datasets: [
       {
         label: "Stimmbeteiligung",
-        data: [12, 19, 3, 5, 2, 3, 19, 3, 5, 2],
+        data: [1,2,3,4,5,6,7,8,9,10],
         backgroundColor: "rgba(75,192,192,0.2)",
         borderColor: "rgba(75,192,192,1)",
         borderWidth: 1,
       },
     ],
   };
+  useEffect(() => {
+    return () => {
+      
+      let daten = [];
+      getGemHoech().then((res) => {
+        daten = res;
+
+        
+
+        for (let i = 0; i < daten.length; i++){
+          Stimmbeteiligung.datasets.data = 0;
+        }
+        console.log("Daten sind ", daten);
+        
+      });
+    };
+  }, []);
+  
+  
+
+
 
   const optionspie = {
     responsive: true,
