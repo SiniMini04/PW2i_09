@@ -28,7 +28,7 @@ function NAV(props) {
 
   //getvotinglist();
 
-  useEffect(() => {
+  useEffect(() => {//
     return 
     () => {
       let votinglist = getAbst().then((response) => {
