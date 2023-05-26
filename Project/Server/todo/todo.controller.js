@@ -1,39 +1,42 @@
-import { response } from 'express';
+import {response} from 'express';
 import {getAll, create, update} from './todo.model.js';
 
 let globTodo = null;
 
-async function getTodos(request, response){
-    if(globTodo != null){
+async function getTodos(request, response) {
+    if (globTodo != null) {
         response.json(globTodo);
-    }else{
+    } else {
         const todos = await getAll();
         globTodo = todos;
-        response.json(todos); 
+        response.json(todos);
     }
-              //Warum wird der return in das attribut return geschrieben?
+    // Warum wird der return in das attribut return geschrieben?
 }
 
 
-
-async function createTodo(request, response){
+async function createTodo(request, response) {
     const todo = await create(request.body);
     response.json(todo);
 }
 
-async function updateTodo(request, response){
-    await update(request.params.id, request.body).then((todo) => { response.json(todo); }).catch((error) => { response.status(404).json({ message: error });});
+async function updateTodo(request, response) {
+    await update(request.params.id, request.body).then((todo) => {
+        response.json(todo);
+    }).catch((error) => {
+        response.status(404).json({message: error});
+    });
 }
 
-async function getFor(req, res){ //Gibt alles zurück was irgend wo den param enthält.
+async function getFor(req, res) { // Gibt alles zurück was irgend wo den param enthält.
     const abst = req.params.abstimung;
 
 
     let to = await getAll();
     let newTo = [];
-    for(let i = 0; i < to.length; i++){
-        
-        if(Object.values(to[i]).includes(abst)){
+    for (let i = 0; i < to.length; i++) {
+
+        if (Object.values(to[i]).includes(abst)) {
             console.log("Gefunden");
             newTo.push(to[i]);
         }
@@ -44,23 +47,23 @@ async function getFor(req, res){ //Gibt alles zurück was irgend wo den param en
 
 }
 
-async function getGemHoech(req,res){
+async function getGemHoech(req, res) {
     let te = await getAll();
     let hoechst = [];
-    
 
-    for(let i = 0; i < te.length; i++){
-        te.sort((a,b) => {
+
+    for (let i = 0; i < te.length; i++) {
+        te.sort((a, b) => {
             return b.stimmbeteiligung - a.stimmbeteiligung;
         });
 
     }
-    for(let i = 0; i < te.length; i++){
+    for (let i = 0; i < te.length; i++) {
         hoechst.push(te[i].stimmbeteiligung)
 
     }
     let highest10 = [];
-    for(let i = 0; i < 10; i++){
+    for (let i = 0; i < 10; i++) {
         highest10.push(hoechst[i]);
     }
 
@@ -69,28 +72,28 @@ async function getGemHoech(req,res){
     res.send(highest10);
 }
 
-async function getJaNein(req, res){
+async function getJaNein(req, res) {
     let par = req.params.abst;
-    
+
     let to = await getAll();
     let newTo = [];
 
-    for(let i = 0; i < to.length; i++){
-        
-        if(Object.values(to[i]).includes(par)){
+    for (let i = 0; i < to.length; i++) {
+
+        if (Object.values(to[i]).includes(par)) {
             console.log("Gefunden");
             newTo.push(to[i]);
         }
     }
-    
-    
+
+
     console.log(newTo);
     let obj = {
         ja_stimmen: 0,
         nein_stimmen: 0
     }
 
-    for(let a = 0; a < newTo.length; a++){
+    for (let a = 0; a < newTo.length; a++) {
 
         let ja_stimmen = newTo[a].ja_stimmen;
         let nein_stimmen = newTo[a].nein_stimmen;
@@ -103,21 +106,21 @@ async function getJaNein(req, res){
     res.send(obj);
 
 }
-async function getguelungueleer(req, res){
+async function getguelungueleer(req, res) {
     let par = req.params.abst;
-    
+
     let to = await getAll();
     let newTo = [];
 
-    for(let i = 0; i < to.length; i++){
-        
-        if(Object.values(to[i]).includes(par)){
+    for (let i = 0; i < to.length; i++) {
+
+        if (Object.values(to[i]).includes(par)) {
             console.log("Gefunden");
             newTo.push(to[i]);
         }
     }
-    
-    
+
+
     console.log(newTo);
     let obj = {
         gueltige_stimmen: 0,
@@ -125,7 +128,7 @@ async function getguelungueleer(req, res){
         leere_stimmen: 0
     }
 
-    for(let a = 0; a < newTo.length; a++){
+    for (let a = 0; a < newTo.length; a++) {
 
         let gueltige_stimmen = newTo[a].gueltige_stimmen;
         let ungueltige_stimmen = newTo[a].ungueltige_stimmen;
@@ -140,41 +143,59 @@ async function getguelungueleer(req, res){
     res.send(obj);
 
 }
+async function AbstNachJahr(req, res) {
+    console.log("Startet AbstNachJahr");
+    let todo = await getAll();
+    const data = [];
+
+    for (let i = 0; i < todo.length; i++) {
+
+        let item = todo[i].vorlageart_bezeichnung;
+        if (! data.includes(item)) {
+            data.push(item);
+        }
+
+    }
+    console.log("Go to sort");
+    data.sort((a, b) => {
+      
+
+        return bb.datum_abstimmung.substring(0, 4) - aa.datum_abstimmung.substring(0, 4);
+    });
+    console.log("Go to return");
+    res.send(data);
+
+}
 
 async function abfrage(req, res) {
     let par = req.params.diagram;
-    switch(par){
+    switch (par) {
         case "abstim":
             const todo = await getAll();
             const data = [];
             console.log(todo.length);
-            for(let i = 0; i < todo.length; i++) {
+            for (let i = 0; i < todo.length; i++) {
 
-                
-                
+
                 let item = todo[i].vorlageart_bezeichnung;
-                if(!data.includes(item)){
+                if (! data.includes(item)) {
                     data.push(item);
                 }
-                
+
             }
 
-                    
-                
-            
-            
-            
+
             console.log(data);
             res.json({art: data});
-            
+
             break;
         case "tooltip":
 
-            
+
             const todos = await getAll();
             let data2 = []
-            
-            for(let i = 0; i < todos.length; i++){
+
+            for (let i = 0; i < todos.length; i++) {
                 let name = todos[i].gemeinde_name;
                 let stimmberechtigte = todos[i].stimmberechtigte;
                 let eingelegte_stimmzettel = todos[i].eingelegte_stimmzettel;
@@ -183,24 +204,24 @@ async function abfrage(req, res) {
                 let gueltige_stimmen = todos[i].gueltige_stimmen;
                 let ja_stimmen = todos[i].ja_stimmen;
                 let nein_stimmen = todos[i].nein_stimmen;
-                let stimmbeteiligung = todos[i].stimmbeteiligung; //9
+                let stimmbeteiligung = todos[i].stimmbeteiligung; // 9
 
                 let obj = {};
-                
+
                 obj = {
-                    "name" : name,
+                    "name": name,
                     "stimmberechtigte": stimmberechtigte,
                     "eingelegte_stimmzettel": eingelegte_stimmzettel,
-                    "leere_stimmen" : leere_stimmen,
-                    "ungueltige_stimmen" : ungueltige_stimmen,
-                    "gueltige_stimmen" : gueltige_stimmen,
-                    "ja_stimmen" : ja_stimmen,
-                    "neinstimmen" : nein_stimmen,
-                    "stimmbeteiligung" : stimmbeteiligung
+                    "leere_stimmen": leere_stimmen,
+                    "ungueltige_stimmen": ungueltige_stimmen,
+                    "gueltige_stimmen": gueltige_stimmen,
+                    "ja_stimmen": ja_stimmen,
+                    "neinstimmen": nein_stimmen,
+                    "stimmbeteiligung": stimmbeteiligung
                 }
                 data2.push(obj);
-                
-            //case "dia1":
+
+                // case "dia1":
 
                 /*
                 - Ja nein im kanton
@@ -216,17 +237,14 @@ async function abfrage(req, res) {
                 - gültig
                     */
 
-                //break;
+                // break;
             }
             console.log(data2);
             res.send(data2);
-           
-
-
 
 
             res.send('d2');
-        break;
+            break;
 
 
         case "dia1":
@@ -236,10 +254,14 @@ async function abfrage(req, res) {
 }
 
 
-
-
-
-
-
-
-export { getTodos, createTodo, updateTodo, abfrage, getFor, getJaNein, getguelungueleer, getGemHoech };
+export {
+    getTodos,
+    createTodo,
+    updateTodo,
+    abfrage,
+    getFor,
+    getJaNein,
+    getguelungueleer,
+    getGemHoech,
+    AbstNachJahr
+};
