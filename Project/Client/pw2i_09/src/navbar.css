@@ -11,3 +11,7 @@
 .menu.open {
   transform: translateX(0);
 }
+
+nav {
+  margin-top: 30px;
+}

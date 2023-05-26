@@ -72,7 +72,7 @@ function Diagramme() {
             <Pie data={Stimmen} options={optionspie} />
           </div>
         </div>
-        <div id="chart-wrapper">
+        <div id="line-wrapper">
           <div className="chart">
             <Bar data={Stimmbeteiligung} options={optionsbar} />
           </div>
