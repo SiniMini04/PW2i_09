@@ -161,7 +161,7 @@ async function abfrage(req, res) {
 
                 
                 
-                let item = todo[i].vorlageart_bezeichnung;
+                let item = todo[i].vorlage_bezeichnung;
                 if(!data.includes(item)){
                     data.push(item);
                 }
