@@ -35,11 +35,6 @@ function NAV(props) {
     };
   }, []);
 
-  const sendDataToBackend = (data) => {
-    console.log("Sending data to backend:", data);
-    doFindAbstiimung(data);
-  };
-
   return (
     <>
       <nav>

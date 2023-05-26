@@ -14,6 +14,7 @@ function Diagramme(props) {
     let abstimmung = props.abstimmung;
     abstimmung = encodeURIComponent(abstimmung);
     console.log(abstimmung);
+    console.log("https://localhost:3030/api/todos/janein/" + abstimmung);
     /*
     let data = axios
       .get("https://localhost:3030/api/todos/janein/" + abstimmung)
@@ -60,6 +61,7 @@ function Diagramme(props) {
       },
     ],
   };
+  /*
   useEffect(() => {
     return () => {
       let daten = [];
@@ -72,7 +74,7 @@ function Diagramme(props) {
         console.log("Daten sind ", daten);
       });
     };
-  }, []);
+  }, []);*/
 
   const optionspie = {
     responsive: true,
